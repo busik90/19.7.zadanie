@@ -1,0 +1,23 @@
+{
+  "name": "React-Redux-comments-app",
+  "version": "0.1.0",
+  "description": "Lista komentarzy wraz z akcjami dla nich.",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0"
+  },
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/pawelbus/19.7.zadanie"
+  }
+}
