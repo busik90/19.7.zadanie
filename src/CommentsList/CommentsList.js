@@ -33,7 +33,8 @@ class CommentsList extends React.Component {
           ></textarea>
           <input type="submit" value='Dodaj komentarz'/>
         </form>
-        {this.props.comments.map(comment => <Comment key={comment.id} {...comment} />)}
+        {this.props.comments.map(comment =>
+          <Comment key={comment.id} edit={comment.editStatus} {...comment} />)}
       </ul>
     )
   }

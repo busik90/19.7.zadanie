@@ -3,6 +3,7 @@ import uuid from 'uuid';
 export const ADD_COMMENT = 'ADD_COMMENT',
              REMOVE_COMMENT = 'REMOVE_COMMENT',
              EDIT_COMMENT = 'EDIT_COMMENT',
+             SAVE_CHANGE = 'SAVE_CHANGE',
              THUMB_UP_COMMENT = 'THUMB_UP_COMMENT',
              THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 
@@ -11,15 +12,25 @@ const comments = {
     return {
       type: ADD_COMMENT,
       text,
-      id: uuid.v4()
+      id: uuid.v4(),
+      onEdit: false
     }
   },
 
-  edit: function(id, text) {
+  edit: function(id) {
     return {
       type: EDIT_COMMENT,
       id,
-      text
+      onEdit: true
+    }
+  },
+
+  saveChange: function(id, text) {
+    return {
+      type: SAVE_CHANGE,
+      id,
+      text,
+      onEdit: false
     }
   },
 
