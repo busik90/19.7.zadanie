@@ -12,16 +12,14 @@ const comments = {
     return {
       type: ADD_COMMENT,
       text,
-      id: uuid.v4(),
-      onEdit: false
+      id: uuid.v4()
     }
   },
 
   edit: function(id) {
     return {
       type: EDIT_COMMENT,
-      id,
-      onEdit: true
+      id
     }
   },
 
@@ -29,8 +27,7 @@ const comments = {
     return {
       type: SAVE_CHANGE,
       id,
-      text,
-      onEdit: false
+      text
     }
   },
 

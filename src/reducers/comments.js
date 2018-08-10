@@ -10,7 +10,7 @@ import {
 function comments(state = [], action) {
   switch (action.type) {
     case ADD_COMMENT:
-      return [{ id: action.id, text: action.text, votes: 0, onEdit: action.onEdit }, ...state];
+      return [{ id: action.id, text: action.text, votes: 0, onEdit: false, wasEdited: false }, ...state];
 
     case REMOVE_COMMENT:
       return state.filter(comment =>
@@ -18,11 +18,11 @@ function comments(state = [], action) {
 
     case EDIT_COMMENT:
       return state.map(comment =>
-        (comment.id === action.id) ? { ...comment, onEdit: action.onEdit } : comment);
+        (comment.id === action.id) ? { ...comment, onEdit: true } : comment);
 
     case SAVE_CHANGE:
       return state.map(comment =>
-        (comment.id === action.id) ? { ...comment, text: action.text, onEdit: action.onEdit} : comment);
+        (comment.id === action.id) ? { ...comment, text: action.text, onEdit: false, wasEdited: true} : comment);
 
     case THUMB_UP_COMMENT:
       return state.map(comment =>
