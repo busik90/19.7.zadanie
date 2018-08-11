@@ -4,8 +4,13 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      onEdit: false
     }
+  }
+
+  editModeOn(text) {
+    this.setState({ text, onEdit: true });
   }
 
   handleChange(e) {
@@ -15,13 +20,11 @@ class Comment extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.saveChange(this.props.id, this.state.text);
-    this.setState({ commentText: '' });
+    this.setState({onEdit: false});
   }
 
   render() {
-    const { onEdit, text } = this.props;
-
-    return onEdit === false ? this.renderComment() : this.renderEditComment(text)
+    return this.state.onEdit === false ? this.renderComment() : this.renderEditComment()
   }
 
   renderComment() {
@@ -30,7 +33,6 @@ class Comment extends React.Component {
             id,
             thumbUpComment,
             thumbDownComment,
-            editComment,
             removeComment } = this.props;
 
     return (
@@ -39,10 +41,7 @@ class Comment extends React.Component {
         <span> | votes: {votes}</span>
         <button onClick={() => thumbUpComment(id)}>Thumb up</button>
         <button onClick={() => thumbDownComment(id)}>Thumb down</button>
-        <button onClick={ () => { this.setState({ text }); editComment(id); } }
-        >
-        Edit
-        </button>
+        <button onClick={() => this.editModeOn(text)}>Edit</button>
         <button onClick={() => removeComment(id)}>Delete</button>
       </li>
     );

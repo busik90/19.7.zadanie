@@ -2,7 +2,6 @@ import uuid from 'uuid';
 
 export const ADD_COMMENT = 'ADD_COMMENT',
              REMOVE_COMMENT = 'REMOVE_COMMENT',
-             EDIT_COMMENT = 'EDIT_COMMENT',
              SAVE_CHANGE = 'SAVE_CHANGE',
              THUMB_UP_COMMENT = 'THUMB_UP_COMMENT',
              THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
@@ -13,13 +12,6 @@ const comments = {
       type: ADD_COMMENT,
       text,
       id: uuid.v4()
-    }
-  },
-
-  edit: function(id) {
-    return {
-      type: EDIT_COMMENT,
-      id
     }
   },
 
